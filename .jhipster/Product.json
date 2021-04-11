@@ -1,0 +1,44 @@
+{
+  "name": "Product",
+  "fields": [
+    {
+      "fieldName": "productId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "pattern"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesPattern": "[a-z]*"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "restaurant",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "restaurant"
+    }
+  ],
+  "entityTableName": "product",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411211209"
+}

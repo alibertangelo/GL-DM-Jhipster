@@ -1,0 +1,26 @@
+{
+  "coopCycleApp": {
+    "deliveryMan": {
+      "home": {
+        "title": "Delivery Men",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Delivery Man",
+        "createOrEditLabel": "Създайте или редактирайте Delivery Man",
+        "notFound": "Delivery Men не са намерени"
+      },
+      "created": "Създаден е нов Delivery Man с идентификатор {{ param }}",
+      "updated": "Delivery Man с идентификатор {{ param }} e oбновен",
+      "deleted": "Delivery Man с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Delivery Man {{ id }}?"
+      },
+      "detail": {
+        "title": "Delivery Man"
+      },
+      "id": "ID",
+      "phone": "Phone",
+      "name": "Name",
+      "order": "Order"
+    }
+  }
+}

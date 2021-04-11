@@ -1,0 +1,123 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-order-heading" data-cy="OrderCreateUpdateHeading" jhiTranslate="coopCycleApp.order.home.createOrEditLabel">
+        Create or edit a Order
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.orderId" for="field_orderId">Order Id</label>
+          <input type="number" class="form-control" name="orderId" id="field_orderId" data-cy="orderId" formControlName="orderId" />
+          <div *ngIf="editForm.get('orderId')!.invalid && (editForm.get('orderId')!.dirty || editForm.get('orderId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('orderId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('orderId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.price" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+          <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('price')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.restaurant" for="field_restaurant">Restaurant</label>
+          <select class="form-control" id="field_restaurant" data-cy="restaurant" name="restaurant" formControlName="restaurant">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                restaurantOption.id === editForm.get('restaurant')!.value?.id ? editForm.get('restaurant')!.value : restaurantOption
+              "
+              *ngFor="let restaurantOption of restaurantsCollection; trackBy: trackRestaurantById"
+            >
+              {{ restaurantOption.restaurantId }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.deliveryMan" for="field_deliveryMan">Delivery Man</label>
+          <select class="form-control" id="field_deliveryMan" data-cy="deliveryMan" name="deliveryMan" formControlName="deliveryMan">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                deliveryManOption.id === editForm.get('deliveryMan')!.value?.id ? editForm.get('deliveryMan')!.value : deliveryManOption
+              "
+              *ngFor="let deliveryManOption of deliveryMenSharedCollection; trackBy: trackDeliveryManById"
+            >
+              {{ deliveryManOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="coopCycleApp.order.client" for="field_client">Client</label>
+          <select class="form-control" id="field_client" data-cy="client" name="client" formControlName="client">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clientOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientOption"
+              *ngFor="let clientOption of clientsSharedCollection; trackBy: trackClientById"
+            >
+              {{ clientOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

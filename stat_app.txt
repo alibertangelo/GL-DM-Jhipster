@@ -1,0 +1,25 @@
+     100 files     200 files     300 files     381 text files.
+classified 381 filesDuplicate file check 381 files (361 known unique)Unique:      100 files                                          Unique:      200 files                                          Unique:      300 files                                               379 unique files.                              
+Counting:  100Counting:  200Counting:  300      43 files ignored.
+
+github.com/AlDanial/cloc v 1.82  T=0.18 s (1864.8 files/s, 200545.0 lines/s)
+--------------------------------------------------------------------------------
+Language                      files          blank        comment           code
+--------------------------------------------------------------------------------
+JavaScript                      280           4256            797          24900
+JSON                             21              0              0           4165
+Java                              9             75             33            339
+Swift                             3             81             48            259
+Gradle                            3             31            122            220
+Objective C                       3             38             26            172
+YAML                              3              1              7            137
+Markdown                          4             54              0            129
+Bourne Again Shell                1             21             36            123
+XML                               6             12              5            102
+DOS Batch                         1             25              2             79
+Starlark                          1              2              1             16
+ProGuard                          1              4             12              7
+C/C++ Header                      2              4              3              6
+--------------------------------------------------------------------------------
+SUM:                            338           4604           1092          30654
+--------------------------------------------------------------------------------

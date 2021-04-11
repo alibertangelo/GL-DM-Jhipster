@@ -1,0 +1,49 @@
+{
+  "name": "Client",
+  "fields": [
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "pattern"],
+      "fieldValidateRulesPattern": "[0-9]*"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "pattern"],
+      "fieldValidateRulesMinlength": "3",
+      "fieldValidateRulesPattern": "[a-z]*"
+    },
+    {
+      "fieldName": "surname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "pattern"],
+      "fieldValidateRulesMinlength": "2",
+      "fieldValidateRulesPattern": "[a-z]*"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "order",
+      "otherEntityField": "orderId"
+    }
+  ],
+  "entityTableName": "client",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411211207"
+}

@@ -1,0 +1,48 @@
+entity Client {
+  phone String required unique pattern(/[0-9]*/)
+  name String required minlength(3) pattern(/[a-z]*/)
+  surname String required minlength(2) pattern(/[a-z]*/)
+  address String required
+}
+
+entity Restaurant {
+	restaurantId Integer required unique 
+  title String required 
+  location String required
+  mark Integer
+}
+
+entity Product { 
+  productId Integer required unique 
+  name String required minlength(2) pattern(/[a-z]*/)
+  description String 
+  price Integer required
+}
+
+entity Order {
+  orderId Integer required unique
+  description String
+  price Integer required
+}
+
+entity DeliveryMan {
+phone String required unique pattern(/[0-9]*/)
+name String required minlength(2) pattern(/[a-z]*/)
+}
+
+relationship OneToOne {
+  Order{Restaurant(restaurantId)} to Restaurant
+}
+
+relationship OneToMany {
+  Restaurant{Product(productId)} to Product
+  DeliveryMan{Order(orderId)} to Order
+  Client{Order(orderId)} to Order
+}
+
+
+paginate Product, Restaurant with infinite-scroll
+paginate Order with pagination
+
+dto * with mapstruct
+service * with serviceImpl

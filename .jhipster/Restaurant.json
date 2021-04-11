@@ -1,0 +1,43 @@
+{
+  "name": "Restaurant",
+  "fields": [
+    {
+      "fieldName": "restaurantId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mark",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "restaurant",
+      "relationshipName": "product",
+      "otherEntityField": "productId"
+    }
+  ],
+  "entityTableName": "restaurant",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210411211208"
+}
